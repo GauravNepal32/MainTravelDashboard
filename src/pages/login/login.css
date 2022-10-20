@@ -1,0 +1,16 @@
+.login-container {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+
+}
+
+.copy-right-container {
+    color: rgba(82, 82, 82, 0.8);
+}
+
+.login-btn {
+    background-color: #2659a5;
+    color: white;
+}
+

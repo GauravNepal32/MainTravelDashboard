@@ -5,9 +5,205 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(223, 223, 223);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.portal-nav ul li {
+  margin: 30px 0px;
+}
+
+.portal-left-container {
+  width: 300px;
+min-height: 1000px;
+  background-color: white;
+}
+
+.App {}
+
+.portal-right-container {
+  width: 100%;
+  padding: 30px;
+  height: 100%;
+}
+
+.add-btn {
+  background-color: green;
+  color: white;
+}
+
+.view-btn {
+  background-color: yellow;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+}
+
+.portal-nav ul {
+  width: 100%;
+  padding: 10px;
+}
+
+.portal-nav ul li {
+  color: #757575;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.portal-nav ul li a {
+  color: #757575;
+  text-decoration: none;
+}
+
+.page-heading {
+  background-color: white;
+}
+
+.main-container {
+  background-color: white;
+  margin-top: 30px;
+}
+
+.table td,
+.table th {
+  text-align: center;
+}
+
+.active-nav {
+  border-right: 3px solid black;
+  font-weight: bold;
+  color: black;
+}
+
+.active-nav .material-symbols-outlined {
+  color: black;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.white-background {
+  background-color: white;
+}
+.active-nav div {
+  color: black;
+}
+.backend-small-text * {
+  font-size: 16px;
+  color: black;
+}
+
+.greyscale-image {
+  filter: grayscale(100%);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  font-weight: bold;
+  color: #757575;
+}
+
+.dashboard-child-container {
+  background-color: white;
+  width: 290px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.sub-text {
+  color: #757575;
+  font-size: 12px;
+}
+
+.number-text {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.edit-btn {
+  background-color: rgb(223, 223, 223);
+  width: 30px;
+  height: 30px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.edit-btn span {
+  font-size: 19px;
+}
+
+.select-container {
+  width: 150px;
+}
+
+.confirmation-box-container {
+  width: 300px;
+  height: auto;
+}
+
+.dark-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(91, 91, 91, 0.242);
+  position: relative;
+}
+
+.confirmation-box-container {
+  position: fixed;
+  left: 50%;
+  right: 50%;
+  background-color: white;
+  padding: 30px;
+}
+
+.confirm-box {
+  padding: 30px !important;
+}
+
+.confirm-box .confirm-box__content {
+  padding: 30px;
+}
+
+.confirm-box .confirm-box__actions:first-child {}
+
+
+.confirm-box button[role="confirmable-button"] {
+  background-color: green !important;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none
+}
+
+.confirm-box button[role="cancellable-button"] {
+  background-color: rgb(192, 57, 57) !important;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none
+}
+
+.dropdown-click {
+  cursor: pointer;
+}
+
+#university-dropdown-container {
+  transition: all 0.5s ease-out;
 }
