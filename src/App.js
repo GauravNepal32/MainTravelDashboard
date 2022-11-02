@@ -2,9 +2,6 @@ import React from "react";
 import Portal from "./pages/Portal";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import { Courses } from "./pages/Courses/Courses";
-import AddCourses from "./pages/Courses/AddCourses"
-import UpdateCourses from "./pages/Courses/UpdateCourses";
 import Login from "./pages/login/Login"
 import { AuthProvider } from "./authentication/auth";
 import { ProtectedRoute } from "./authentication/ProtectedRoute";
@@ -39,22 +36,6 @@ function App() {
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/courses" element={
-                <ProtectedRoute>
-                  <Courses />
-                </ProtectedRoute>
-              }>
-              </Route>
-              <Route path="add-courses" element={
-                <ProtectedRoute>
-                  <AddCourses />
-                </ProtectedRoute>
-              } />
-              <Route path="edit-courses/:id" element={
-                <ProtectedRoute>
-                  <UpdateCourses />
                 </ProtectedRoute>
               } />
               {/* Location */}

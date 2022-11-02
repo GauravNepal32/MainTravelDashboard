@@ -7,12 +7,7 @@ const PortalNavbar = () => {
     const [activePortal, setActivePortal] = useState("Dashboard");
     const [uniDrop, setUniDrop] = useState(false)
     useEffect(() => {
-        if (location == "/courses") {
-            setActivePortal("Courses");
-        } else if (location === "/dashboard") {
-            setActivePortal("Dashboard");
-        }
-        else if (location === "/faqs") {
+        if (location === "/faqs") {
             setActivePortal("FAQs");
         }
         else if (location === "/location") {
@@ -37,17 +32,6 @@ const PortalNavbar = () => {
                                 <div className="">
                                     Dashboard
                                 </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className={activePortal === "Courses" ? 'd-flex justify-content-evenly active-nav' : 'd-flex justify-content-evenly'} to="/courses">
-                                <span class="material-symbols-outlined">
-                                    chat
-                                </span>
-                                <div className="">
-                                    Courses
-                                </div>
-
                             </Link>
                         </li>
                         <li>
