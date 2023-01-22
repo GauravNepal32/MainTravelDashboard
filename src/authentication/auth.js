@@ -7,15 +7,13 @@ export const AuthProvider=({children})=>{
     const [isLogin,setIsLogin]=useState(false)
     const userData =sessionStorage.getItem("access_token");
     const [user, setUser] = useState(null);
-    // const baseURL="https://newmotifapi.elscript.co"
-    const baseURL="http://localhost:8000"
+    const baseURL = "https://travel-api.elscript.co"
 
 
     const login=(user)=>{
         setUser(user);
         sessionStorage.setItem("access_token", user.token)
         setIsLogin(true)
-        console.log(isLogin)
     }
 
     const logout=()=>{

@@ -15,6 +15,7 @@ const UpdateLocation = () => {
     const token = sessionStorage.getItem('access_token')
     const auth = useAuth();
     const [value, setValue] = useState('');
+    const [loading, setLoading] = useState(false)
 
     const modules = {
         toolbar: [
@@ -46,6 +47,7 @@ const UpdateLocation = () => {
         loadData()
     }, [])
     const handleSubmit = async (id, oldImage, e) => {
+        setLoading(true)
         e.preventDefault();
         const name = document.getElementById('locationName').value;
         const district = document.getElementById('locationDistrict').value;
@@ -62,7 +64,7 @@ const UpdateLocation = () => {
                     }
                 }
             )
-            console.log(response)
+            setLoading(false)
             if (response.status === 200) {
                 toast.success('Data Edited successfully', {
                     position: "top-center",
@@ -78,6 +80,7 @@ const UpdateLocation = () => {
                 console.log("Couldnot update the data")
             }
         } catch (err) {
+            setLoading(false)
             console.log(err)
         }
     }
@@ -125,8 +128,15 @@ const UpdateLocation = () => {
                         <input type="file" id="locationFile" />
                         <img src={`${locationData.thumbnail}`} width={50} alt="" />
                     </div>
+                    {loading ?
+                        <button class="btn add-btn" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm me-3" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
+                        : <>
                     <input className='btn add-btn' type="submit" value={"Save"} />
                     <Link className='btn ms-3' to="/location">Back</Link>
+                        </>}
                 </form>
             </>}
 

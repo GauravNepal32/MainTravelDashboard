@@ -21,11 +21,11 @@ const AddPackage = () => {
     const [include, setInclude] = useState('');
     const [exclude, setExclude] = useState('');
     const [duration, setDuration] = useState(0);
+    const [loading, setLoading] = useState(false)
     const [dayBreak, setInputFields] = useState([
         { day: '', description: '' }
     ])
 
-    // console.log(dayBreak.serializeArray())
 
     const addFields = (e) => {
         e.preventDefault();
@@ -81,14 +81,12 @@ const AddPackage = () => {
         loadLocation();
     }, [])
     const handleSubmit = async (e) => {
+        setLoading(true)
         e.preventDefault();
         const name = document.getElementById('packageName').value;
-        console.log(name)
         const location = selectLocation.value;
-        console.log(location)
         const category = selectCategory.value;
         const starting_price = document.getElementById('packagePrice').value;
-        console.log(starting_price)
         const max_guests = document.getElementById('packageGuests').value;
         const min_age = document.getElementById('packageLimit').value;
         const language = document.getElementById('packageLanguage').value;
@@ -108,8 +106,8 @@ const AddPackage = () => {
                         Authorization: `Bearer ${token}`
                     }
                 })
+            setLoading(false)
             if (response.status === 200) {
-                console.log(response)
                 toast.success('Data Added successfully', {
                     position: "top-center",
                     autoClose: 5000,
@@ -122,7 +120,7 @@ const AddPackage = () => {
                 setTimeout(() => navigate('/package'), 500)
             }
         } catch (err) {
-            console.log(err)
+            setLoading(false)
         }
     }
     return (
@@ -224,8 +222,13 @@ const AddPackage = () => {
                     <label for="exampleFormControlTextarea1" class="form-label me-4">Thumbnail: </label>
                     <input type="file" id='packageFile' />
                 </div>
-
+                {loading ?
+                    <button class="btn add-btn" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm me-3" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button> :
                 <input className='btn add-btn' type="submit" value={"Add packages"} />
+                }
             </form>
         </div>
     )

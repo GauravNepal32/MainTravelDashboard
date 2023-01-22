@@ -5,39 +5,12 @@ import './Dashboard.css'
 import { useAuth } from '../../authentication/auth';
 import { Table } from './Table/Table';
 const Dashboard = () => {
-    const [options, setOptions] = useState({});
-    const auth = useAuth()
-    const token = sessionStorage.getItem('access_token')
-    const [booking, setBooking] = useState([]);
-    const [load, setLoad] = useState(false)
-    const [confirmation, setConfirmation] = useState(false)
 
-    const loadData = async () => {
-        try {
-            const response = await axios.get(`${auth.baseURL}/api/get-all-booking`,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            )
-            setBooking(response.data.data)
-            setLoad(true)
-        } catch (err) {
-            setLoad(true)
-            console.log(err)
-        }
-    }
 
-    useEffect(() => {
-        loadData()
-    }, [])
     const truncate = (str, max, suffix) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
     return (
         <div>
             <h2 className='page-heading p-4'>Dashboard</h2>
-            {confirmation && <>Hello</>}
             <div className="dashboard-main-container d-flex mt-4">
                 <div className="dashboard-child-container me-3">
                     <div className=" d-flex align-items-center justify-content-between">
@@ -68,9 +41,9 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="booking-interaction mt-4">
-                {load &&
+                {/* {load &&
                     <Table data={booking} />
-                }
+                } */}
             </div>
         </div>
     )

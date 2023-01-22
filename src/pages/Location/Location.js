@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../../authentication/auth';
+import Loading from '../Loading/Loading'
 const Location = () => {
     const [allLocation, setAllLocation] = useState();
     const [renderApp, setRenderApp] = useState(false)
@@ -34,7 +35,6 @@ const Location = () => {
                 }
             }
         );
-        console.log(response)
         if (response.status === 200) {
             toast.success("Locations Deleted Successfully")
             setTimeout(() => { loadData() }, 500)
@@ -47,7 +47,7 @@ const Location = () => {
 
     return (
         <div className=''>
-            {renderApp && <>
+            {renderApp ? <>
                 <h2 className='page-heading p-4'>Locations</h2>
                 <ToastContainer
                     position="top-center"
@@ -94,7 +94,10 @@ const Location = () => {
                         </tbody>
                     </table>
                 </div>
-            </>}
+            </>
+                :
+                <Loading />
+            }
 
         </div>
     )

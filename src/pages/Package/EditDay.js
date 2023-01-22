@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
 const EditDay = (props) => {
-    console.log(props.id)
     const [dayChange, setDayChange] = useState(props.day)
     const [descChange, setDescChange] = useState(props.description)
     const token = sessionStorage.getItem('access_token')
@@ -40,10 +39,8 @@ const EditDay = (props) => {
     }
     const handleSave = async (e) => {
         const id = props.id
-        console.log(id)
         e.preventDefault();
         try {
-            console.log(dayChange)
             const response = await axios.post(`${auth.baseURL}/api/update-day/${id}`, { day: dayChange, description: descChange }
                 , {
                     headers: {

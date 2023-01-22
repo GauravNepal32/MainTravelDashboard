@@ -52,7 +52,6 @@ export const Table = (props) => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data, updateMyData, }, useSortBy)
     return (
         <table id='booking-info' {...getTableProps()}>
-            {console.log(updatedData)}
             <thead>
                 {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>

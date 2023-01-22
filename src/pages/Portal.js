@@ -6,7 +6,7 @@ const Portal = () => {
     return (
         <div>
             <div className="d-flex align-self-stretch px-0">
-                <div className="portal-left-container h-100">
+                <div className="portal-left-container">
                     <PortalNavbar />
                 </div>
                 <div className="portal-right-container">

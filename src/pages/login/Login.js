@@ -8,12 +8,14 @@ const Login = () => {
     const [success, setSuccess] = useState("");
     const auth = useAuth();
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
     const handleLogin = async (e) => {
         setErrMsg('');
         setSuccess('')
         e.preventDefault();
         const email = document.getElementById('exampleInputEmail1').value;
         const password = document.getElementById('exampleInputPassword1').value;
+        setLoading(true)
         try {
             const response = await axios.post(`${auth.baseURL}/api/login`, { email, password });
             console.log(response)
@@ -22,11 +24,12 @@ const Login = () => {
                 auth.login(response.data)
                 sessionStorage.setItem("access_token", response.data.token)
                 sessionStorage.setItem('userDetails', JSON.stringify(response.data.user))
+                setLoading(false)
                 navigate("/");
 
             }
         } catch (err) {
-            console.log(err.response.data.msg)
+            setLoading(false)
             setErrMsg(err.response.data.msg)
         }
     }
@@ -47,7 +50,15 @@ const Login = () => {
                         <div className="err-container text-danger">{errMsg}</div>
                         <div className="success-container">{success}</div>
                         <div className="d-flex justify-content-center">
+                            {loading ?
+                                <button class="btn login-btn" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm me-3" role="status" aria-hidden="true"></span>
+                                    Loading...
+                                </button>
+
+                                :
                             <button type="submit" class="btn login-btn mt-4 mx-auto">LOG IN</button>
+                            }
                         </div>
                     </form>
                 </div>

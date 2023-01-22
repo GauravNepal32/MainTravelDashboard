@@ -12,7 +12,7 @@ const AddLocation = () => {
     const token = sessionStorage.getItem('access_token')
     const auth = useAuth();
     const [value, setValue] = useState('');
-
+    const [loading, setLoading] = useState(false)
     const modules = {
         toolbar: [
             [{ font: [] }],
@@ -28,6 +28,7 @@ const AddLocation = () => {
 
 
     const handleSubmit = async (e) => {
+        setLoading(true)
         e.preventDefault();
         const name = document.getElementById('locationName').value;
         const district = document.getElementById('locationDistrict').value;
@@ -43,8 +44,8 @@ const AddLocation = () => {
                         Authorization: `Bearer ${token}`
                     }
                 })
+            setLoading(false)
             if (response.status === 200) {
-                console.log(response)
                 toast.success('Data Added successfully', {
                     position: "top-center",
                     autoClose: 5000,
@@ -57,6 +58,7 @@ const AddLocation = () => {
                 setTimeout(() => navigate('/location'), 500)
             }
         } catch (err) {
+            setLoading(false)
             console.log(err)
         }
     }
@@ -97,7 +99,14 @@ const AddLocation = () => {
                     <label for="exampleFormControlTextarea1" class="form-label me-4">Thumbnail: </label>
                     <input type="file" id='locationFile' />
                 </div>
+                {
+                    loading ?
+                        <button class="btn add-btn" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm me-3" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button> :
                 <input className='btn add-btn' type="submit" value={"Add locations"} />
+                }
             </form>
         </div>
     )

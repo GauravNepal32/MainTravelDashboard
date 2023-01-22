@@ -7,8 +7,13 @@ const PortalNavbar = () => {
     const [activePortal, setActivePortal] = useState("Dashboard");
     const [uniDrop, setUniDrop] = useState(false)
     useEffect(() => {
-        if (location === "/faqs") {
-            setActivePortal("FAQs");
+
+
+        if (location === "/dashboard") {
+            setActivePortal("Dashboard");
+        }
+        else if (location === "/Categorys") {
+            setActivePortal("Categorys");
         }
         else if (location === "/location") {
             setActivePortal("Location");
@@ -16,13 +21,16 @@ const PortalNavbar = () => {
         else if (location === "/package") {
             setActivePortal("Package");
         }
+        else if (location === "/change-password") {
+            setActivePortal("ChangePassword");
+        }
     });
     return (
-        <div>
-            <div className="navbar portal-nav">
-                <ul className='list-unstyled'>
+        <div className='h-100'>
+            <div className="navbar portal-nav h-100">
+                <ul className='list-unstyled h-100'>
                     <div className="company-name text-center fw-bold mt-2">ELSCRIPT</div>
-                    <div className="mt-5">
+                    <div className="mt-5 h-100">
 
                         <li>
                             <Link className={activePortal === "Dashboard" ? 'd-flex justify-content-evenly active-nav' : 'd-flex justify-content-evenly'} to="/dashboard">
@@ -35,12 +43,12 @@ const PortalNavbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link className={activePortal === "Location" ? 'd-flex justify-content-evenly active-nav' : 'd-flex justify-content-evenly'} to="/location">
+                            <Link className={activePortal === "Courses" ? 'd-flex justify-content-evenly active-nav' : 'd-flex justify-content-evenly'} to="/courses">
                                 <span class="material-symbols-outlined">
                                     chat
                                 </span>
                                 <div className="">
-                                    Location
+                                    Courses
                                 </div>
 
                             </Link>
@@ -56,15 +64,26 @@ const PortalNavbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link className={activePortal === "FAQs" ? "d-flex justify-content-evenly active-nav" : "d-flex justify-content-evenly"} to="/faqs">
+                            <Link className={activePortal === "Categorys" ? "d-flex justify-content-evenly active-nav" : "d-flex justify-content-evenly"} to="/Categorys">
                                 <span class="material-symbols-outlined">
                                     help
                                 </span>
                                 <div className="">
-                                    FAQ
+                                    Category
                                 </div>
                             </Link>
                         </li>
+                        <li className='mt-auto change-pass mb-0 position-absolute'>
+                            <Link className={activePortal === "ChangePassword" ? "d-flex justify-content-evenly active-nav" : "d-flex justify-content-evenly"} to="/change-password">
+                                <span class="material-symbols-outlined">
+                                    key
+                                </span>
+                                <div className="">
+                                    Change Password
+                                </div>
+                            </Link>
+                        </li>
+
 
                     </div>
                 </ul>
